@@ -7,6 +7,8 @@
 #Symbols folder
 .alpackages/
 #Snapshots folder
+.idea/
+#Хз
 .snapshots/
 #Testing Output folder
 .output/
