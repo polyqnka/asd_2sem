@@ -1,6 +1,7 @@
 import tracemalloc
 import time
 
+
 def schedule_lectures():
     tracemalloc.start()  # Начинаем отслеживание памяти
     start_time = time.time()  # Засекаем время выполнения
@@ -19,18 +20,29 @@ def schedule_lectures():
     # Сортировка заявок по времени окончания
     lectures.sort(key=lambda x: x[1])
 
-    # Жадный алгоритм
-    count = 0
-    last_end_time = 0
+    # Динамическое программирование
+    dp = [0] * (N + 1)  # Массив для хранения максимального числа лекций до каждой лекции
+    # Заполнение массива dp
+    for i in range(1, N + 1):
+        # Для каждой лекции i
+        si, fi = lectures[i - 1]
 
-    for si, fi in lectures:
-        if si >= last_end_time:
-            count += 1
-            last_end_time = fi
+        # Поиск лекции, которая заканчивается до начала текущей
+        last_non_conflicting = 0
+        for j in range(i - 1, 0, -1):
+            if lectures[j - 1][1] <= si:
+                last_non_conflicting = j
+                break
+
+        # Рекуррентное соотношение: либо пропустить эту лекцию, либо взять её
+        dp[i] = max(dp[i - 1], dp[last_non_conflicting] + 1)
+
+    # Результат - максимальное количество лекций
+    result = dp[N]
 
     # Запись результата
     with open('/Users/polinamitrofanova/Desktop/asd/asd_2sem/lab1/task8/txtf/output.txt', 'w') as f:
-        f.write(str(count))
+        f.write(str(result))
 
     # Замеры времени и памяти
     current, peak = tracemalloc.get_traced_memory()
@@ -41,6 +53,7 @@ def schedule_lectures():
     print(f"Пиковое использование памяти: {peak / 1024:.2f} KB")
 
     tracemalloc.stop()  # Останавливаем отслеживание памяти
+
 
 # Вызов функции
 schedule_lectures()
