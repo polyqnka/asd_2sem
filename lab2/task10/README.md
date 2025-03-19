@@ -1,5 +1,6 @@
-# Задание 8: Высота дерева возвращается
+# Задание 10: Проверка корректности.
 
 ## Описание
-![image](https://github.com/user-attachments/assets/2b928f5c-2ecb-4b54-93fa-7bdb921efbc2)
+![image](https://github.com/user-attachments/assets/df3e991f-30b3-4ac9-b767-9d558c268614)
+
 
