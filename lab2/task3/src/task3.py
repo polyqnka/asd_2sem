@@ -1,9 +1,11 @@
+import time
+import tracemalloc
+
 class TreeNode:
     def __init__(self, key):
         self.key = key
         self.left = None
         self.right = None
-
 
 class BST:
     def __init__(self):
@@ -29,7 +31,7 @@ class BST:
                     current.right = TreeNode(key)
                     return
             else:
-                return  # Уже есть, пропускаем
+                return
 
     def find_min_greater_than(self, key):
         current = self.root
@@ -46,6 +48,9 @@ class BST:
 
 
 def process_queries(input_file="input.txt", output_file="output.txt"):
+    tracemalloc.start()
+    start_time = time.time()
+
     tree = BST()
     results = []
 
@@ -59,11 +64,19 @@ def process_queries(input_file="input.txt", output_file="output.txt"):
             elif action == ">":
                 results.append(str(tree.find_min_greater_than(number)))
 
+    end_time = time.time()
+    current_memory, peak_memory = tracemalloc.get_traced_memory()
+    tracemalloc.stop()
+
     with open(output_file, "w") as file:
         file.write("\n".join(results) + "\n")
+        file.write(f"Execution time: {end_time - start_time:.6f} seconds\n")
+        file.write(f"Memory usage: {current_memory / 1024:.2f} KB (Peak: {peak_memory / 1024:.2f} KB)\n")
 
     print("Простейшее BST:")
     print("\n".join(results) + "\n")
+    print(f"Execution time: {end_time - start_time:.6f} seconds")
+    print(f"Memory usage: {current_memory / 1024:.2f} KB (Peak: {peak_memory / 1024:.2f} KB)")
 
 
 if __name__ == "__main__":
