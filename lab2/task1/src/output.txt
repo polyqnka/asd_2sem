@@ -1,3 +1,5 @@
 1 2 3 4 5
 4 2 1 3 5
 1 3 2 5 4
+Execution time: 0.000500 seconds
+Memory usage: 1.52 KB (Peak: 13.82 KB)
