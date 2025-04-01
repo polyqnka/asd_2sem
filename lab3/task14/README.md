@@ -1,5 +1,6 @@
 # Задание 14: Автобусы
 
 ## Описание
-![image](https://github.com/user-attachments/assets/2b928f5c-2ecb-4b54-93fa-7bdb921efbc2)
+<img width="398" alt="image" src="https://github.com/user-attachments/assets/c8d42526-28b6-457b-b936-382ae372f55f" />
+
 
