@@ -9,8 +9,8 @@ class TestMinTime(unittest.TestCase):
         # given
         expected_result = '5'
         data = (3, 1, 3, 4, [[1, 0, 2, 5], [1, 1, 2, 3], [2, 3, 3, 5], [1, 1, 3, 10]])
-        expected_time = 2
-        expected_memory = 256
+        expected_time = 1
+        expected_memory = 16
 
         # when
         time_st = time.perf_counter()
@@ -31,8 +31,8 @@ class TestMinTime(unittest.TestCase):
         # given
         expected_result = '-1'
         data = (3, 1, 3, 2, [[1, 0, 2, 5], [1, 1, 2, 3]])
-        expected_time = 2
-        expected_memory = 256
+        expected_time = 1
+        expected_memory = 16
 
         # when
         time_st = time.perf_counter()
