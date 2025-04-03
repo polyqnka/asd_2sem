@@ -7,7 +7,6 @@ def read_from_file(path):
         for _ in range(R):
             route = list(map(int, f.readline().split()))
             routes.append(route)
-        print((N, d, v, R, routes))
         return (N, d, v, R, routes)
 
 def write_to_file(result, path):
